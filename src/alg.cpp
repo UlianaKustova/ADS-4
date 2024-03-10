@@ -1,7 +1,7 @@
 // Copyright 2021 NNTU-CS
 int countPairs1(int* arr, int len, int value) {
     int count = 0;
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < (len - 1); i++) {
         for (int j = i + 1; j < len; j++) {
             if ((arr[i] + arr[j]) == value) {
                 count++;
@@ -15,25 +15,30 @@ int countPairs1(int* arr, int len, int value) {
 }
 
 int countPairs2(int* arr, int len, int value) {
-    int count = 0, x = 0, y = len;
-    for (int i = len; i > 0; i--) {
-        if (arr[i] <= value) {
-            y = i;
-            break;
-        }
-    }
+    int count = 0, x = 0, j = 0;
     for (int i = 0; i < (len - 1); i++) {
-        if ((arr[i] + arr[i+1]) >= value) {
+        if ((arr[i] + arr[i + 1]) >= value) {
             x = i;
             break;
         }
     }
-    for (int i = 0; i < y; i++) {
-        for (int j = x; j <= y; j++) {
-            if (j > i) {
-                if ((arr[i] + arr[j]) == value) {
-                    count++;
-                }
+    for (int i = 0; i < (len - 1); i++) {
+        if (arr[i] > value) {
+            break;
+        }
+        if (x < i) {
+            j = i + 1;
+        } else {
+            j = x;
+        }
+        for (; j < len; j++) {
+            
+            if ((arr[i] + arr[j]) == value) {
+                count++;
+                std::cout << arr[i] << " " << arr[j] << std::endl;
+            }
+            if (arr[j] > value) {
+                break;
             }
         }
     }
@@ -45,7 +50,7 @@ int countPairs2(int* arr, int len, int value) {
 
 int countPairs3(int* arr, int len, int value) {
     int count = 0, y = 0, min = 0, max = len;
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < (len - 1); i++) {
         min = i;
         max = len - 1;
         while (min <= max) {
@@ -59,12 +64,12 @@ int countPairs3(int* arr, int len, int value) {
             if ((arr[i] + arr[y]) > value) {
                 max = y;
                 if (max - min == 1) {
-                    max = min;
+                    break;
                 }
             } else {
                 min = y;
                 if (max - min == 1) {
-                    min = max;
+                    break;
                 }
             }
         }
@@ -77,5 +82,5 @@ int countPairs3(int* arr, int len, int value) {
     if (count > 0) {
         return count;
     }
-    return 111111;
+    return 0;
 }
