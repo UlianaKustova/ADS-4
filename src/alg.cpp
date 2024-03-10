@@ -22,7 +22,7 @@ int countPairs2(int* arr, int len, int value) {
             break;
         }
     }
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < (len - 1); i++) {
         if ((arr[i] + arr[i+1]) >= value) {
             x = i;
             break;
