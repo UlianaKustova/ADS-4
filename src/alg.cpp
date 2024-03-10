@@ -32,10 +32,8 @@ int countPairs2(int* arr, int len, int value) {
             j = x;
         }
         for (; j < len; j++) {
-            
             if ((arr[i] + arr[j]) == value) {
                 count++;
-                std::cout << arr[i] << " " << arr[j] << std::endl;
             }
             if (arr[j] > value) {
                 break;
