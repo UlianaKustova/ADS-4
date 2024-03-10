@@ -57,12 +57,12 @@ int countPairs3(int* arr, int len, int value) {
                 if ((arr[i] + arr[y]) < value) {
                     y = y + ((len - y) / 2);
                 }
-            }           
+            }
         }
         for (int j = i + 1; j <= y; j++) {
             if ((arr[i] + arr[j]) == value) {
                 count++;
-            }         
+            }
         }
     }
     if (count > 0) {
