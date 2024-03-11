@@ -40,7 +40,7 @@ int countPairs2(int* arr, int len, int value) {
             }
         }
     }
-    if (count > 0) {
+    if (count > (0)) {
         return count;
     }
     return 0;
