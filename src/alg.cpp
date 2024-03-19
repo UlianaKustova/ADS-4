@@ -64,11 +64,9 @@ int countPairs3(int* arr, int len, int value) {
                     j--;
                 }
                 break;
-            }
-            else if ((arr[i] + arr[y]) > value) {
+            } else if ((arr[i] + arr[y]) > value) {
                 max = y;
-            }
-            else {
+            } else {
                 min = y;
             }
         }
